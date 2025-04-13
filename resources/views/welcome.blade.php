@@ -31,12 +31,18 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        a {
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div class="overlay">
-        <h1>Добро пожаловать на наш сайт!</h1>
-        <p>Скоро здесь будет много интересного.</p>
-    </div>
+    <a class="button" href='{{ asset('mobile_menu') }}'>
+        <div class="overlay">
+            <h1>Добро пожаловать на наш сайт!</h1>
+            <p>Нажмите здесь, чтобы продолжить</p>
+        </div>
+    </a>
 </body>
 </html>
