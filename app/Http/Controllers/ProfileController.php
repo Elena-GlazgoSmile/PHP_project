@@ -3,13 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\User_MB;
 
 class ProfileController extends Controller
 {
-    public function index() {
-        return view('profile/profile');
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            $user = Auth::user();
+            return redirect()->route('profile.show', ['id' => $user->id]);
+        } else {
+            return back()->withErrors(['email' => 'Неверный email или пароль.']);
+        }
     }
 
     public function show($id)
@@ -50,8 +64,12 @@ class ProfileController extends Controller
 
         $user->save();
 
-
         return redirect()->route('profile.show', $user->id)->with('success', 'Профиль успешно обновлён!');
+    }
 
+
+    public function loginForm()
+    {
+        return view('auth.login');
     }
 }

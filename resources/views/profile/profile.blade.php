@@ -35,7 +35,7 @@
 </head>
 <body>
     <nav>
-        <button><a href="{{ route('profile.show', 1) }}" >Профиль</a></button>
+        <button><a href="{{ route('profile.show', $user->id) }}" >Профиль</a></button>
     </nav>
 </body>
 </html>

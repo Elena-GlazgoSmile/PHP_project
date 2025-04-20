@@ -38,7 +38,7 @@
     </style>
 </head>
 <body>
-    <a class="button" href='{{ asset('mobile_menu') }}'>
+    <a class="button" href='{{ asset('login') }}'>
         <div class="overlay">
             <h1>Добро пожаловать на наш сайт!</h1>
             <p>Нажмите здесь, чтобы продолжить</p>

@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 
-class User_MB extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User_MB extends Authenticatable
 {
+    use \Illuminate\Auth\Authenticatable;
     protected $fillable = [
         'name',
         'surname',
@@ -13,6 +16,7 @@ class User_MB extends Model
         'email',
         'phone',
         'profile_picture',
+        'password',
     ];
 
     public function fullName()

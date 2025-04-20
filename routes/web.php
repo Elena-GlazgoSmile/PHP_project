@@ -11,6 +11,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FriendsController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {return 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';});
 Route::get('/welcome', [Controller::class, 'index'])->name('welcome.index');
@@ -49,3 +51,20 @@ Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
+
+
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/register', [loginController::class, 'register'])->name('register');
+
+//Route::post('/login', [LoginController::class, 'authentication'])->name('authentication');
+Route::post('/register', [loginController::class, 'registerCreate'])->name('registerCreate');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
+});
+Route::get('/login', [ProfileController::class, 'loginForm'])->name('login.form');
+
+// Обработка логина
+Route::post('/login', [ProfileController::class, 'login'])->name('login');
+
+// Страница профиля
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
