@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\User_MB;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -34,7 +35,14 @@ class ProfileController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        Log::info('Edit profile ID: ' . $id);
+        $user = User_MB::findOrFail($id);
+        Log::info('Auth user ID: ' . Auth::id());
+
+        if ($user->id !== Auth::id()) {
+            abort(403, 'Unauthorized');
+        }
+
         return view('profile.edit', compact('user'));
     }
 

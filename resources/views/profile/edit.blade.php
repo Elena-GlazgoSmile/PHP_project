@@ -66,15 +66,7 @@
                         <button type="submit" class="btn btn-light"><h3>Сохранить изменения</h3></button>
                 </div>
             </nav>
-            <nav class="but">
-                <div class="form-group">
-                        <button class="btn btn-light">
-                            <a href="{{ route('profile.show', $user->id) }}">
-                                <h3>Вернуться</h3>
-                            </a>
-                        </button>
-                </div>
-            </nav>
+
     </form>
     </nav>
 </body>
