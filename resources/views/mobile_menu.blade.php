@@ -36,7 +36,7 @@
 <body>
     <nav>
         <div class="d-flex align-items-end flex-column mb-3" style="height: 200px;">
-            <div class="p-2"><a href="{{ route('profile/profile')}}"><button type="button" class="btn btn-outline-light"><h4>Мой профиль</h4></button></a></div>
+            <div class="p-2"><a href="{{ route('profile.show', $user->id) }}"><button type="button" class="btn btn-outline-light"><h4>Мой профиль</h4></button></a></div>
             <div class="p-2"><a href="{{ route('friends') }}"><button type="button" class="btn btn-outline-light"><h4>Друзья</h4></button></a></div>
             <div class="p-2"><a href="{{ route('chats') }}"><button type="button" class="btn btn-outline-light"><h4>Чаты</h4></button></a></div>
             <div class="p-2"><a href="{{ route('settings') }}"><button type="button" class="btn btn-outline-light"><h4>Настройки</h4></button></a></div>

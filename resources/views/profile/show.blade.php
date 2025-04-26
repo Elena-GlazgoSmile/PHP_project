@@ -46,7 +46,7 @@
         @if($user->profile_picture)
         <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture" class="profile-image">
     @else
-        <p>Изображение профиля не загружено.</p>
+        <img src="{{ asset('images/5201757552612863537.jpg') }}" alt="Profile Picture" class="profile-image">
     @endif
 
     </nav>
@@ -64,6 +64,15 @@
             <h4>Телефон: {{$user->phone}}</h4>
         </div>
         <button class="btn btn-outline-danger"><a href="{{ route('profile.edit', $user->id) }}">Изменить</a></button>
+    </nav>
+    <nav>
+        <div class="d-flex align-items-end flex-column mb-3" style="height: 200px;">
+            <div class="p-2"><a href="{{ route('post.index') }}"><button type="button" class="btn btn-outline-light"><h4>Посты</h4></button></a></div>
+            <div class="p-2"><a href="{{ route('friends.list') }}"><button type="button" class="btn btn-outline-light"><h4>Друзья</h4></button></a></div>
+            <div class="p-2"><a href="{{ route('chats') }}"><button type="button" class="btn btn-outline-light"><h4>Чаты</h4></button></a></div>
+            <div class="p-2"><a href="{{ route('settings') }}"><button type="button" class="btn btn-outline-light"><h4>Настройки</h4></button></a></div>
+            <div class="p-2"><button type="button" class="btn btn-outline-light"><a href="{{ route('welcome.index') }}"><h4>Выход</h4></button></a></div>
+        </div>
     </nav>
 </body>
 </html>

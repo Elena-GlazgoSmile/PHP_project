@@ -42,7 +42,7 @@ Route::get('/second_page', [SecondController::class,'index']);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/mobile_menu', function () { return view('mobile_menu'); })->name('mobile_menu');
+Route::get('/profile/mobile_menu', function () { return view('profile/mobile_menu'); })->name('profile.mobile_menu');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile/profile');
 Route::get('/friends', [FriendsController::class, 'index'])->name('friends');
 Route::get('/chats', [ChatController::class, 'index'])->name('chats');
@@ -68,3 +68,10 @@ Route::post('/login', [ProfileController::class, 'login'])->name('login');
 
 // Страница профиля
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');
+
+Route::middleware('auth')->group(function() {
+    Route::get('/friends', [FriendsController::class, 'index'])->name('friends');
+    Route::post('/friends/add', [FriendsController::class, 'add'])->name('friends.add');
+    Route::get('/friends/remove/{friendId}', [FriendsController::class, 'remove'])->name('friends.remove');
+    Route::get('/friends/list', [FriendsController::class, 'list'])->name('friends.list');
+});
