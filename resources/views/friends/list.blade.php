@@ -20,6 +20,10 @@
         h2, h4, p{
             color:white;
         }
+        a{
+            text-decoration: none;
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -39,12 +43,14 @@
                 <form method="POST" action="{{ route('friends.add') }}" style="display:inline;">
                     @csrf
                     <input type="hidden" name="friend_id" value="{{ $userItem->id }}">
-                    <button type="submit" class="btn btn-primary">Добавить в друзья</button>
+                    <button type="submit" class="btn btn-success">Добавить в друзья</button>
                 </form>
             @endif
         </div>
+
     </div>
 @endforeach
+<button class="btn btn-success"><a href="<?= $_SERVER['HTTP_REFERER'] ?>">Вернуться</a></button>
 </div>
 </body>
 </html>

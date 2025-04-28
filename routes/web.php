@@ -13,6 +13,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {return 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';});
 Route::get('/welcome', [Controller::class, 'index'])->name('welcome.index');
@@ -75,3 +76,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/friends/remove/{friendId}', [FriendsController::class, 'remove'])->name('friends.remove');
     Route::get('/friends/list', [FriendsController::class, 'list'])->name('friends.list');
 });
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+Route::post('/chats/start/{userId}/{currentUserId}', [ChatController::class, 'startChat'])->name('chats.start');
+Route::get('/chat/{chat}', [ChatController::class, 'show'])->name('chat.show');
+Route::post('/chat/{chat}/send', [ChatController::class, 'send'])->name('chat.send');
