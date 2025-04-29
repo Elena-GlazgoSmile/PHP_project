@@ -50,7 +50,7 @@
 
     </div>
 @endforeach
-<button class="btn btn-success"><a href="<?= $_SERVER['HTTP_REFERER'] ?>">Вернуться</a></button>
+<button class="btn btn-success"><a href="{{ route('profile.show', Auth::user()->id) }}">Вернуться</a></button>
 </div>
 </body>
 </html>

@@ -7,7 +7,8 @@
     <title>Профиль пользователя</title>
     <style>
         body {
-            background-color: rgb(49, 49, 49);
+            background-image: url('{{ asset('images/createPost.jpg') }}');
+            background-size: cover;
             display: flex;
             align-items: center;
 
@@ -70,7 +71,7 @@
             <div class="p-2"><a href="{{ route('post.index') }}"><button type="button" class="btn btn-outline-light"><h4>Посты</h4></button></a></div>
             <div class="p-2"><a href="{{ route('friends.list') }}"><button type="button" class="btn btn-outline-light"><h4>Друзья</h4></button></a></div>
             <div class="p-2"><a href="{{ route('users.index') }}"><button type="button" class="btn btn-outline-light"><h4>Чаты</h4></button></a></div>
-            <div class="p-2"><a href="{{ route('settings') }}"><button type="button" class="btn btn-outline-light"><h4>Настройки</h4></button></a></div>
+            <div class="p-2"><a href="{{ route('contacts.index') }}"><button type="button" class="btn btn-outline-light"><h4>Контакты</h4></button></a></div>
             <div class="p-2"><button type="button" class="btn btn-outline-light"><a href="{{ route('welcome.index') }}"><h4>Выход</h4></button></a></div>
         </div>
     </nav>

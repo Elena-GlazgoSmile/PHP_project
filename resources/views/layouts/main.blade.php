@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/sass/app.scss'])
-    <title>Document</title>
+    <title>Посты</title>
+    <style>
+        .container{
+            width: max-content;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -16,16 +21,16 @@
                   <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('main.index') }}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('profile.show', Auth::user()->id) }}">Моя страница</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
+                        <a class="nav-link" href="{{ route('post.index') }}">Посты</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ route('about.index') }}">About</a>
+                        <a class="nav-link" href="{{ route('post.create') }}">Создать пост</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ route('contacts.index') }}">Contacts</a>
+                        <a class="nav-link" href="{{ route('contacts.index') }}">Контакты</a>
                       </li>
                     </ul>
                   </div>
