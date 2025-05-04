@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="over">
-        <form action="{{ route('post.store') }}" method="post">
+        <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <h3 for="title">Заголовок</h3>
@@ -28,6 +28,11 @@
                 @error('title')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror('title')
+            </div>
+            <div class="form-group">
+                <h3 for="photo">Фото</h3>
+                <input type="file" name="photo">
+                @error('photo')<div>{{ $message }}</div>@enderror
             </div>
             <div class="form-group">
                 <h3 for="content">Контент</h3>

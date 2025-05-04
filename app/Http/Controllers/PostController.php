@@ -20,14 +20,24 @@ class PostController extends Controller
         return view('post.create', compact('categories'));
     }
 
-    public function store() {
-        $data = request()->validate([
-            'title' => 'string',
-            'content' => 'string',
-            'image' => 'string',
-            'category_id' => 'string',
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'category_id' => 'required|integer',
+            'photo' => 'nullable|file|image|max:2048',
+            'image' => 'nullable|string'
         ]);
-        Post::create($data);
+
+        if ($request->hasFile('photo')) {
+            $filePath = $request->file('photo')->store('photos', 'public');
+            $validated['photo'] = basename($filePath);
+
+        }
+
+        Post::create($validated);
+
         return redirect()->route('post.index');
     }
 
@@ -40,14 +50,23 @@ class PostController extends Controller
         return view('post.edit', compact('post','categories'));
     }
 
-    public function update(Post $post) {
-        $data = request()->validate([
-            'title' => 'string',
-            'content' => 'string',
-            'image' => 'string',
-            'category_id' =>'',
+    public function update(Request $request, Post $post)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'category_id' => 'required|integer',
+            'photo' => 'nullable|file|image|max:2048',
+            'image' => 'nullable|string'
         ]);
-        $post->update($data);
+
+        if ($request->hasFile('photo')) {
+            $filePath = $request->file('photo')->store('public/photos');
+            $validated['photo'] = basename($filePath);
+        }
+
+        $post->update($validated);
+
         return redirect()->route('post.show', $post->id);
     }
 

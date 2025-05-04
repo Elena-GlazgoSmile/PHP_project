@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="over">
-        <form action="{{ route('post.update', $post->id) }}" method="post">
+        <form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="form-group">
@@ -30,6 +30,13 @@
             <div class="form-group">
                 <h3 for="content">Контент</h3>
                 <textarea class="form-control" name="content" id="content" placeholder="Контент">{{ $post->content }}</textarea>
+            </div>
+            <div class="form-group">
+                <h3 for="photo">Обновить фото</h3>
+                <input type="file" name="photo">
+                @if($post->photo)
+                <img src="{{ asset('storage/photos/' . $post->photo) }}" style="max-width:300px;">
+                @endif
             </div>
             <div class="form-group">
                 <h3 for="image">Картинка</h3>

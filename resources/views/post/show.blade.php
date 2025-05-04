@@ -35,6 +35,11 @@
     <div class="overlay">
         <div><h1> {{ $post->title }} </h1></div>
         <div>{{ $post->content }} </div>
+        <div>
+            @if($post->photo)
+            <img src="{{ asset('storage/photos/' . $post->photo) }}" style="max-width:300px;">
+            @endif
+        </div>
     </div>
     <div class="nav">
         <div>
