@@ -61,7 +61,7 @@ class PostController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $filePath = $request->file('photo')->store('public/photos');
+            $filePath = $request->file('photo')->store('photos', 'public');
             $validated['photo'] = basename($filePath);
         }
 
