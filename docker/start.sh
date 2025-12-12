@@ -1,9 +1,9 @@
-#!/bin/bash
-
-php artisan key:generate
-
-php artisan migrate --force
+#!/bin/sh
 
 php-fpm -D
 
-nginx -g 'daemon off;'
+sleep 2
+
+php artisan migrate --force
+
+tail -f /dev/null
