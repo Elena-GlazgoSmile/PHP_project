@@ -60,6 +60,17 @@ return [
             'report' => false,
         ],
 
+        'yandexcloud' => [
+            'driver' => 's3',
+            'key' => env('YC_ACCESS_KEY_ID'),
+            'secret' => env('YC_SECRET_ACCESS_KEY'),
+            'region' => env('YC_REGION', 'ru-central1'),
+            'bucket' => env('YC_BUCKET'),
+            'url' => env('YC_ENDPOINT', 'https://storage.yandexcloud.net'),
+            'endpoint' => env('YC_ENDPOINT', 'https://storage.yandexcloud.net'),
+            'use_path_style_endpoint' => true,
+        ],
+
     ],
 
     /*
